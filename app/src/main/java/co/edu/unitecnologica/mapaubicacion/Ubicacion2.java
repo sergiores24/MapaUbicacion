@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -112,6 +113,7 @@ public class Ubicacion2 extends FragmentActivity implements OnMapReadyCallback {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        if(error instanceof NetworkError)
                             Toast.makeText(Ubicacion2.this, "Error de conexion", LENGTH_SHORT).show();
                     }
                 }
