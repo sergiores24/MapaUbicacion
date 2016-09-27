@@ -1,6 +1,7 @@
 package co.edu.unitecnologica.mapaubicacion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -8,6 +9,8 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -60,6 +63,13 @@ public class Ubicacion1 extends FragmentActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        Button next = (Button) findViewById(R.id.Cambialo);
+        next.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), Ubicacion2.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -97,10 +107,11 @@ public class Ubicacion1 extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.clear();
         texto=(TextView)findViewById(R.id.LatLong);
 
         // Add a marker in Sydney and move the camera
-        texto.setText("Latatitud: "+String.valueOf(lat)+"\nLongitud: "+String.valueOf(lon));
+        texto.setText("\nLatitud: "+String.valueOf(lat)+"\nLongitud: "+String.valueOf(lon));
         LatLng ubic = new LatLng(lat, lon);
         mMap.addMarker(new MarkerOptions().position(ubic).title("Mi ubicación"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubic,15));

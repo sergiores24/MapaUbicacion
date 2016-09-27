@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">MapaUbicacion</string>
-    <string name="title_activity_ubicacion1">Map</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_ubicacion2">MapaUbicacion</string>
+    <string name="title_activity_ubicacion1">MapaUbicacion</string>
 </resources>

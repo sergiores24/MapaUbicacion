@@ -10,16 +10,17 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="44dp"
         android:id="@+id/LatLong"
-        android:layout_weight="1.24" />
+        android:layout_weight="0.54" />
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="403dp"
-        tools:context="co.edu.unitecnologica.mapaubicacion.Ubicacion2" />
+        tools:context="co.edu.unitecnologica.mapaubicacion.Ubicacion1"
+        android:layout_weight="0.19" />
 
     <Button
         android:text="Mi ubicación"
